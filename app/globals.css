@@ -1,42 +1,208 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+
+/* Smooth, crisp rendering */
+* {
+  -webkit-font-smoothing: antialiased;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Floating white header */
+.headerWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: 70px;
+  background: white;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+
+  z-index: 1000;
 }
 
+/* Centered nav */
+.headerNav {
+  max-width: 900px;
+  height: 100%;
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: 2rem;
+  color: black;
+}
+
+/* Global layout */
 html,
 body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
   margin: 0;
+  margin-top: 15px;
+  padding: 0;
+  background: white;
+  color: black;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif;
+
+  line-height: 1.6;
 }
 
+/* Smooth transitions */
+body {
+  width: 100%;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Main container — allow wide layouts */
+main {
+  margin-top: 55px;
+  width: 100%;
+  text-align: center;
+  font-size: 20px;
+  
+}
+
+
+/* Links */
 a {
-  color: inherit;
+  color: black;
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+a:hover {
+  text-decoration: underline;
+}
+
+/* Inputs + buttons inherit font */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Subtle, modern scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f3f4f6;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Sky background */
+body {
+  overflow-x: hidden;
+  position: relative;
+}
+
+.cloud-container {
+  background-image: url("/pexels-icon0-479519.jpg");
+  background-size: cover;
+  background-position: center;
+  padding-bottom: 20px;
+  padding-top: 10px;
+}
+
+/* Moving cloud layer */
+.clouds {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 20%;
+  height: 20%;
+  background: url("/clouds.png") repeat-x;
+  background-size: contain;
+  animation: cloudDrift 60s linear infinite;
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.flex-box-50 {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin-left: 50px;
+  padding: 20px;
+  font-size: 24px;
+}
+
+.flex-box-10 {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-left: 50px;
+  padding: 20px;
+  align-items: right;
+}
+
+.about-text {
+  font-size: 18px;
+  line-height: 1.6;
+  width: 50%;
+  margin-top: 40px;
+ 
+}
+
+.weather-image-2 {
+  width: 30%;
+  margin-top: 20px;
+  border-radius: 10px;
+  float: right;
+  margin-left: 20px; /* spacing from text */
+}
+
+.weather-image-3 {
+  width: 30%;
+  margin-top: 20px;
+  border-radius: 10px;
+  float: left;
+  margin-right: 40px; /* spacing from text */
+}
+
+.about-container {
+  margin-top: 55px;
+  padding-top: 15px;
+  width: 100%;
+  text-align: center;
+  font-size: 20px;
+  background-color: aquamarine; 
+}
+
+.features-container {
+  background-image: url("/Screenshot 2026-02-26 at 17-35-04 sky - Google Search.png");
+  background-size: cover;        /* fills container, crops if needed */
+  background-position: center;   /* keeps subject centered */
+  background-repeat: no-repeat;
+  padding-bottom: 20px;
+  padding-top: 10px;
+  font-size: 40px;
+}
+
+.features-6 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+  margin: 0 auto;
+  margin-bottom: 55px;
+}
+
+
+@keyframes cloudDrift {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
   }
 }
