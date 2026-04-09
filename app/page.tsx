@@ -29,7 +29,7 @@ export default function Home() {
       const geoRes = await fetch(
         `https://geocoding-api.open-meteo.com/v1/search?name=${city}&count=1`,
       );
-
+ console.log("Geo API Response:", geoRes);
       if (!geoRes.ok) throw new Error("City not found");
 
       const geoData = await geoRes.json();
@@ -129,7 +129,6 @@ export default function Home() {
             API. Enter any city name to instantly view temperature and wind
             speed.
           </p>
-
     
           <div className="grid grid-cols-1 gap-8 mt-10">
             <div className="p-6 bg-white rounded-xl shadow">
@@ -176,8 +175,7 @@ export default function Home() {
                 Simple, modern, and easy to use.
               </p>
             </div>
-        </div>
-        
+        </div>  
           </div>
         </div>
       </div>
