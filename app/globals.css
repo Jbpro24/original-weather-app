@@ -147,6 +147,7 @@ body {
   width: 100%;
   align-items: center;
   justify-content: center;
+  padding-bottom: 30px;
 }
 
 .about-text {
@@ -154,23 +155,24 @@ body {
   line-height: 1.6;
   width: 50%;
   margin-top: 40px;
- 
+  margin-left: 20px;
+  margin-right : 20px;
 }
 
 .weather-image-2 {
   width: 30%;
-  margin-top: 20px;
+  margin: 20px 20px 20px 20px;
   border-radius: 10px;
   float: right;
- margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 
 .weather-image-3 {
   width: 30%;
-  margin-top: 20px;
+  margin: 20px 20px 20px 20px;
   border-radius: 10px;
   float: left;
-  margin-right: 40px; /* spacing from text */
+  margin-bottom: 30px; /* spacing from text */
 }
 
 .about-container {
@@ -243,14 +245,12 @@ body {
   /* Make images responsive + centered */
   .weather-image-2,
   .weather-image-3 {
-    width: 100% !important;
-    justify-content: center;
-    max-width: 300px;
-    height: auto;
-    display: block;
-    margin-bottom: 30px;
-    border-radius: 10px;
-    margin-right: 0 !important ;
+    float: none !important;
+    width: 80% !important;
+    order: 2 !important; /* Ensure images come after text */
+    max-width: 350px;
+    margin: 20px auto !important;
+    display: block !important;
   }
 
   /* Center the page title */
