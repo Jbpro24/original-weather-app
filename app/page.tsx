@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import "./globals.css";
 import React from "react";
 import Image from "next/image";
 
@@ -29,7 +28,7 @@ export default function Home() {
       const geoRes = await fetch(
         `https://geocoding-api.open-meteo.com/v1/search?name=${city}&count=1`,
       );
- console.log("Geo API Response:", geoRes);
+      console.log("Geo API Response:", geoRes);
       if (!geoRes.ok) throw new Error("City not found");
 
       const geoData = await geoRes.json();
@@ -39,7 +38,7 @@ export default function Home() {
       const { latitude, longitude, name, country } = geoData.results[0];
 
       const weatherRes = await fetch(
-        `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,wind_speed_10m`,
+        `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,wind_speed_10m&temperature_unit=fahrenheit&wind_speed_unit=mph`,
       );
 
       if (!weatherRes.ok) throw new Error("Unable to fetch weather");
@@ -57,7 +56,7 @@ export default function Home() {
   };
 
   return (
-    <div className="pt-10 flex flex-col items-center">
+    <div className="flex flex-col items-center">
       <div className="cloud-container">
         {/* TITLE */}
         <h1 className="text-5xl font-bold mb-4 text-center">
@@ -103,33 +102,34 @@ export default function Home() {
 
                 <p className="text-lg">
                   <span className="font-medium">Temperature:</span>{" "}
-                  {weather.temperature_2m}°C
+                  {weather.temperature_2m}°F
                 </p>
                 <p className="text-lg">
                   <span className="font-medium">Wind Speed:</span>{" "}
-                  {weather.wind_speed_10m} m/s
+                  {weather.wind_speed_10m} mph
                 </p>
               </div>
             )}
           </div>
         </div>
-    </div>
+      </div>
 
-
-        {/* RIGHT SIDE — ADDITIONAL INFORMATION */}
-        <div className="flex-box-50">
-          <div className="flex-1">
+      {/* RIGHT SIDE — ADDITIONAL INFORMATION */}
+      <div className="flex-box-50">
+        <div className="flex-1">
           <h2
             className="text-3xl font-semibold mb-4"
-            style={{ textAlign: "left" }}>How This App Works</h2>
-
+            style={{ textAlign: "left" }}
+          >
+            How This App Works
+          </h2>
 
           <p className="text-gray-600 text-sm" style={{ textAlign: "left" }}>
             This application uses real-time weather data from the Open-Meteo
             API. Enter any city name to instantly view temperature and wind
             speed.
           </p>
-    
+
           <div className="grid grid-cols-1 gap-8 mt-10">
             <div className="p-6 bg-white rounded-xl shadow">
               <h3
@@ -175,9 +175,9 @@ export default function Home() {
                 Simple, modern, and easy to use.
               </p>
             </div>
-        </div>  
           </div>
         </div>
       </div>
+    </div>
   );
 }

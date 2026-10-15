@@ -17,14 +17,10 @@ export default function RootLayout({
       <body className="min-h-screen bg-white text-gray-900 antialiased">
         <Header />
 
-        <main className="max-w-5xl mx-auto px-6 pt-20">
-          {children}
-        </main>
+        <main className="max-w-5xl mx-auto px-6">{children}</main>
 
         <Footer />
       </body>
     </html>
   );
 }
-
-
